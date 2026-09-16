@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Sorteador de Numeros</string>
+    <string name="background_principal">Background principal</string>
+    <string name="imagem_logo">imagem logo</string>
+    <string name="sorteador_de_numeros">Sorteador de Números</string>
+    <string name="sortear">Sortear</string>
+    <string name="como_funciona_o_sorteador_de_numeros">Como funciona o sorteador de números</string>
+    <string name="tv_info_content1">O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo especificado pelo usuário.</string>
+    <string name="tvSecondTitle">Posso escolher o intervalo dos números?</string>
+    <string name="tv_second_content">Sim, você pode definir os valores mínimo e máximo para o intervalo dos números sorteados.</string>
 </resources>
