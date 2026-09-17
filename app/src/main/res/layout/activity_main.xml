@@ -59,11 +59,16 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fcvContent"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="36dp"
+                app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@+id/btnDraw"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:navGraph="@navigation/main_nav_graph" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnDraw"
@@ -74,7 +79,9 @@
                 android:drawableEnd="@drawable/ic_ir"
                 android:paddingHorizontal="48dp"
                 android:text="@string/sortear"
-                app:layout_constraintBottom_toBottomOf="@id/ivBackground" />
+                app:layout_constraintBottom_toBottomOf="@id/ivBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tvFirstInfoTitle"
@@ -88,6 +95,8 @@
                 android:text="@string/como_funciona_o_sorteador_de_numeros"
                 android:textAppearance="@style/TextAppearance.RobotoFlex.ParagraphMedium"
                 android:textColor="@color/content_brand"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnDraw" />
 
             <TextView
@@ -98,6 +107,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_info_content1"
                 android:textAppearance="@style/TextAppearance.RobotoFlex.ParagraphMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvFirstInfoTitle" />
 
             <TextView
@@ -112,6 +123,8 @@
                 android:text="@string/tvSecondTitle"
                 android:textAppearance="@style/TextAppearance.RobotoFlex.ParagraphMedium"
                 android:textColor="@color/content_brand"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvFirstInfoContent" />
 
             <TextView
@@ -123,6 +136,8 @@
                 android:layout_marginBottom="36dp"
                 android:text="@string/tv_second_content"
                 android:textAppearance="@style/TextAppearance.RobotoFlex.ParagraphMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvSecondInfoTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

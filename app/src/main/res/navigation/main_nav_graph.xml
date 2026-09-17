@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/configuracaoDeSorteioFragment">
+
+    <fragment
+        android:id="@+id/configuracaoDeSorteioFragment"
+        android:name="com.izel.sorteadordenumeros.ConfiguracaoDeSorteioFragment"
+        android:label="fragment_configuracao_de_sorteio"
+        tools:layout="@layout/fragment_configuracao_de_sorteio" />
+    <fragment
+        android:id="@+id/resultadoSorteioFragment"
+        android:name="com.izel.sorteadordenumeros.ResultadoSorteioFragment"
+        android:label="fragment_resultado_sorteio"
+        tools:layout="@layout/fragment_resultado_sorteio" >
+        <action
+            android:id="@+id/action_resultadoSorteioFragment_to_configuracaoDeSorteioFragment"
+            app:destination="@id/configuracaoDeSorteioFragment" />
+    </fragment>
+</navigation>
