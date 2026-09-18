@@ -4,6 +4,7 @@
     <string name="imagem_logo">imagem logo</string>
     <string name="sorteador_de_numeros">Sorteador de Números</string>
     <string name="sortear">Sortear</string>
+    <string name="sortear_novamente">Sortear novamente</string>
     <string name="como_funciona_o_sorteador_de_numeros">Como funciona o sorteador de números</string>
     <string name="tv_info_content1">O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo especificado pelo usuário.</string>
     <string name="tvSecondTitle">Posso escolher o intervalo dos números?</string>
