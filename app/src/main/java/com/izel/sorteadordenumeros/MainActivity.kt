@@ -2,6 +2,7 @@ package com.izel.sorteadordenumeros
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.ViewCompat
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.izel.sorteadordenumeros.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel: SorteioViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     private val navController by lazy {
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             btnDraw.setOnClickListener {
                 when (btnDraw.text) {
                     getString(R.string.sortear) -> {
-                        navController?.navigate(R.id.action_resultadoSorteioFragment_to_configuracaoDeSorteioFragment)
+                        navController?.navigate(R.id.action_configuracaoDeSorteioFragment_to_resultadoSorteioFragment)
                         btnDraw.text = getString(R.string.sortear_novamente)
                         btnDraw.setCompoundDrawablesWithIntrinsicBounds(
                             null, null,
@@ -44,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                                 R.drawable.ic_sortear_novamente
                             ), null
                         )
+                        viewModel.drawNumbers()
                     }
 
                     getString(R.string.sortear_novamente) -> {

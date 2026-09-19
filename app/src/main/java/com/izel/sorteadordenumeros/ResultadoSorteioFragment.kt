@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.izel.sorteadordenumeros.databinding.FragmentResultadoSorteioBinding
-import kotlin.random.Random
+import kotlinx.coroutines.launch
 
 class ResultadoSorteioFragment : Fragment() {
+    private val viewModel: SorteioViewModel by activityViewModels()
 
     private var _binding: FragmentResultadoSorteioBinding? = null
     private val binding get() = _binding!!
@@ -33,23 +36,40 @@ class ResultadoSorteioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            tvInfoContent.text = getString(R.string.primeiro_resultado, "10")
+            tvInfoContent.text = getString(R.string.numero_sorteio, "10")
 
-            gerarTextoDeNumeroSorteado()
+            lifecycleScope.launch {
+                viewModel.uiState.collect { uiState ->
+                    tvInfoContent.text =
+                        getString(R.string.numero_sorteio, uiState.currentDrawNumber.toString())
+
+                    clearLastDrewNumber()
+
+                    uiState.drawNumbers.forEach { drawNumber ->
+                        generateDrawNumberTextView(drawNumber)
+                    }
+                }
+            }
         }
     }
 
-    fun FragmentResultadoSorteioBinding.gerarTextoDeNumeroSorteado() {
-        val numeroSorteadoTextView = TextView(requireContext()).apply {
+    private fun FragmentResultadoSorteioBinding.generateDrawNumberTextView(drawNumber: Int) {
+        val drawNumberTextView = TextView(requireContext()).apply {
             id = View.generateViewId()
-            text = Random.nextInt(100).toString()
+            text = drawNumber.toString()
             setTextAppearance(R.style.TextAppearance_RobotoMono_Overline)
             textSize = 48f
             setTextColor(ContextCompat.getColor(requireContext(), R.color.content_brand))
         }
 
-        root.addView(numeroSorteadoTextView)
+        root.addView(drawNumberTextView)
         flowResultNumbersHelper.referencedIds =
-            flowResultNumbersHelper.referencedIds.plus(numeroSorteadoTextView.id)
+            flowResultNumbersHelper.referencedIds.plus(drawNumberTextView.id)
+    }
+
+    private fun FragmentResultadoSorteioBinding.clearLastDrewNumber() {
+        flowResultNumbersHelper.referencedIds.forEach {
+            root.removeView(root.findViewById(it))
+        }
     }
 }
